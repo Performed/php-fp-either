@@ -16,6 +16,7 @@
         }
     ],
     "autoload": {
+        "files": ["src/Functions.php"],
         "psr-4": {
             "Performed\\Either\\": "src/"
         }
