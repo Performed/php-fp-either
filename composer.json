@@ -26,10 +26,10 @@
         }
     },
     "description": "An implementation of the Either monad in PHP.",
-    "homepage": "http://www.github.com/php-fp/php-fp-either",
+    "homepage": "http://www.github.com/Performed/php-fp-either",
     "keywords": ["functional", "monad", "either"],
     "license": "MIT",
-    "name": "php-fp/php-fp-either",
+    "name": "Performed/php-fp-either",
     "scripts": {
         "test": "phpunit test"
     },
