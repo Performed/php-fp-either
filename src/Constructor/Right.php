@@ -4,6 +4,7 @@ namespace Performed\Either\Constructor;
 
 use Performed\Either\Either;
 use PhpOption\None;
+use PhpOption\Some;
 
 /**
  * An OO-looking implementation of the Right constructor.
@@ -68,11 +69,11 @@ final class Right extends Either
     }
 
     /**
-     * @return None .
+     * @return Some .
      */
     public function toOption()
     {
-        return None::create();
+        return new Some($this->value);
     }
 
 }

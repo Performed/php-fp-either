@@ -3,6 +3,7 @@
 namespace Performed\Either\Constructor;
 
 use Performed\Either\Either;
+use PhpOption\None;
 use PhpOption\Some;
 
 /**
@@ -63,11 +64,11 @@ final class Left extends Either
     }
 
     /**
-     * @return Some .
+     * @return None .
      */
     public function toOption()
     {
-        return new Some($this->value);
+        return None::create();
     }
 
 }
