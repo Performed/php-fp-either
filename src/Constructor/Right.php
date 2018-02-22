@@ -1,8 +1,9 @@
 <?php
 
-namespace PhpFp\Either\Constructor;
+namespace Performed\Either\Constructor;
 
-use PhpFp\Either\Either;
+use Performed\Either\Either;
+use PhpOption\None;
 
 /**
  * An OO-looking implementation of the Right constructor.
@@ -65,4 +66,13 @@ final class Right extends Either
     {
         return $g($this->value);
     }
+
+    /**
+     * @return None .
+     */
+    public function toOption()
+    {
+        return None::create();
+    }
+
 }

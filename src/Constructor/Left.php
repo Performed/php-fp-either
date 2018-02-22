@@ -1,8 +1,9 @@
 <?php
 
-namespace PhpFp\Either\Constructor;
+namespace Performed\Either\Constructor;
 
-use PhpFp\Either\Either;
+use Performed\Either\Either;
+use PhpOption\Some;
 
 /**
  * An OO-looking implementation of the Left constructor.
@@ -60,4 +61,13 @@ final class Left extends Either
     {
         return $f($this->value);
     }
+
+    /**
+     * @return Some .
+     */
+    public function toOption()
+    {
+        return new Some($this->value);
+    }
+
 }

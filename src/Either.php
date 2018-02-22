@@ -1,8 +1,33 @@
 <?php
 
-namespace PhpFp\Either;
+namespace Performed\Either;
 
-use PhpFp\Either\Constructor\{Left, Right};
+use Performed\Either\Constructor\{Left, Right};
+use PhpOption\None;
+use PhpOption\Option;
+use PhpOption\Some;
+
+/**
+ * Allow scala like syntax.
+ *
+ * @param mixed $x The value to be wrapped.
+ * @return Left A new Left-constructed type.
+ */
+function Left($x) : Left
+{
+    return Either::left($x);
+}
+
+/**
+ * Allow scala like syntax.
+ *
+ * @param mixed $x The value to be wrapped.
+ * @return Right A new Right-constructed type.
+ */
+function Right($x) : Right
+{
+    return Either::right($x);
+}
 
 /**
  * An OO-looking implementation of Either in PHP.
@@ -12,7 +37,7 @@ abstract class Either
     /**
      * Construct a new Left instance with a value.
      * @param mixed $x The value to be wrapped.
-     * @return A new Left-constructed type.
+     * @return Left A new Left-constructed type.
      */
     final public static function left($x) : Left
     {
@@ -22,7 +47,7 @@ abstract class Either
     /**
      * Construct a new Right instance with a value.
      * @param mixed $x The value to be wrapped.
-     * @return A new Right-constructed type.
+     * @return Right A new Right-constructed type.
      */
     final public static function right($x) : Right
     {
@@ -32,11 +57,11 @@ abstract class Either
     /**
      * Applicative constructor for Either.
      * @param mixed $x The value to be wrapped.
-     * @return A new Right-constructed type.
+     * @return Right A new Right-constructed type.
      */
-    final public static function of($x) : Either
+    final public static function of($x) : Right
     {
-        return self::right($x);
+        return Right($x);
     }
 
     /**
@@ -49,10 +74,24 @@ abstract class Either
         try {
             return self::of($f());
         } catch (\Exception $e) {
-            return self::left($e);
+            return Left($e);
         }
     }
 
+    /**
+     * The inner value of the instance.
+     * @var mixed
+     */
+    protected $value = null;
+
+    /**
+     * Standard constructor for an Either instance.
+     * @param mixed $value The value to wrap.
+     */
+    private final function __construct($value)
+    {
+        $this->value = $value;
+    }
     /**
      * Apply a wrapped parameter to this wrapped function.
      * @param Either $that The wrapped parameter.
@@ -91,17 +130,8 @@ abstract class Either
     abstract public function either(callable $f, callable $g);
 
     /**
-     * The inner value of the instance.
-     * @var mixed
+     * @return Option .
      */
-    protected $value = null;
+    abstract public function toOption();
 
-    /**
-     * Standard constructor for an Either instance.
-     * @param mixed $value The value to wrap.
-     */
-    final private function __construct($value)
-    {
-        $this->value = $value;
-    }
 }
