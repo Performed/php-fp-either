@@ -68,6 +68,11 @@ final class Right extends Either
         return $g($this->value);
     }
 
+    public function getOrCall(callable $else)
+    {
+        return $this->value;
+    }
+
     public function isLeft(): bool
     {
         return false;

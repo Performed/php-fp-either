@@ -139,6 +139,8 @@ abstract class Either
         return $val;
     }
 
+    abstract public function getOrCall(callable $else);
+
     /**
      * @return mixed .
      */
