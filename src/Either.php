@@ -116,6 +116,30 @@ abstract class Either
     abstract public function isRight(): bool;
 
     /**
+     * @param mixed $value Out parameter.
+     * @return bool @see isRight
+     */
+    public function isGetRight(&$value): bool
+    {
+        $val = $this->isRight();
+        if ($val)
+        {
+            $value = $this->getRight();
+        }
+        return $val;
+    }
+
+    public function isGetLeft(&$value): bool
+    {
+        $val = $this->isLeft();
+        if ($val)
+        {
+            $value = $this->getLeft();
+        }
+        return $val;
+    }
+
+    /**
      * @return mixed .
      */
     abstract public function getLeft();
