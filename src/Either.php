@@ -106,6 +106,31 @@ abstract class Either
     abstract public function either(callable $f, callable $g);
 
     /**
+     * @return bool .
+     */
+    abstract public function isLeft(): bool;
+
+    /**
+     * @return bool .
+     */
+    abstract public function isRight(): bool;
+
+    /**
+     * @return mixed .
+     */
+    abstract public function getLeft();
+
+    /**
+     * @return mixed .
+     */
+    abstract public function getRight();
+
+    /**
+     * @return mixed .
+     */
+    abstract public function getValue();
+
+    /**
      * @return Option .
      */
     abstract public function toOption();

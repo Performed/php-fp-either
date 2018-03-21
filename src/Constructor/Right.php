@@ -68,6 +68,30 @@ final class Right extends Either
         return $g($this->value);
     }
 
+    public function isLeft(): bool
+    {
+        return false;
+    }
+
+    public function isRight(): bool
+    {
+        return true;
+    }
+
+    public function getLeft()
+    {
+        throw new \Exception("Called getLeft on Right");
+    }
+
+    public function getRight()
+    {
+        return $this->value;
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
     /**
      * @return Some .
      */

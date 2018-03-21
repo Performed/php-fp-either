@@ -63,6 +63,31 @@ final class Left extends Either
         return $f($this->value);
     }
 
+    public function isLeft(): bool
+    {
+        return true;
+    }
+
+    public function isRight(): bool
+    {
+        return false;
+    }
+
+    public function getLeft()
+    {
+        return $this->value;
+    }
+
+    public function getRight()
+    {
+        throw new \Exception("Called getRight on Left");
+    }
+
+    public function getValue()
+    {
+        return $this->value;
+    }
+
     /**
      * @return None .
      */
